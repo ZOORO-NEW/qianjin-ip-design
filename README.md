@@ -1,6 +1,6 @@
-# Qianjin IP Design System | 前进IP形象设计系统
+# Qianjin IP Design System | 前进IP形象与品牌标识设计系统
 
-> **6大风格 × 8维设计规则 × 跨风格通用法则**。让IP形象从"好看"到"有灵魂"。
+> **6大风格 × 8维设计规则 × 跨风格通用法则，并内置「标识/Logo 设计系统（AI 生成实战）」**。让IP形象从"好看"到"有灵魂"，让品牌标识从"给规则"到"能直接出图"。
 
 ## 覆盖风格 | Style Categories
 
@@ -30,16 +30,26 @@
 - 剪影测试 / 缩略图测试 / 黑白测试 / 反色测试
 - 衍生品适配 / 表情包潜力 / 联名空间 / 商标注册
 
+## 标识/Logo 设计系统（AI 生成实战）
+
+技能内置 `scripts/logo_gen.py`，可直接在 WorkBuddy 出专业标识，无需额外安装：
+
+- **三层锁定框架**：`--genre` 风格锚定 / `--style` 形态约束 / `--no-text` 符号优先，脚本自动追加「扁平矢量、禁用渐变/3D/阴影」硬约束
+- **国产免费引擎**：默认硅基流动（SiliconFlow），一个 API 切几十种模型、国内直连、注册送额度 + 拉新 16 元券；默认模型 `Qwen/Qwen-Image`（收敛强、当前账号可用），账户激活 `FLUX.1-dev` 后收敛更优
+- **出图后工序**：AI 出底稿 → 人工挑图 → Figma/Illustrator 加字标 → 转 SVG → 32px 可用性测试
+
+详见 `SKILL.md` 第九章。
+
 ## 安装
 
-复制 `SKILL.md` 到 WorkBuddy 技能目录：
+复制技能目录到 WorkBuddy 技能目录（含 `SKILL.md` 与 `scripts/`）：
 ```
-~/.workbuddy/skills/qianjin-ip-design/SKILL.md
+~/.workbuddy/skills/qianjin-ip-design/
 ```
 
 ## 触发词
 
-IP设计、形象设计、角色设计、萌系设计、潮酷设计、国风设计、极简设计、暗黑设计、治愈设计、品牌吉祥物、潮玩设计
+IP设计、形象设计、角色设计、萌系设计、潮酷设计、国风设计、极简设计、暗黑设计、治愈设计、品牌吉祥物、潮玩设计、Logo设计、品牌标识、公众号头像、App图标、AI出图翻车、提示词模板
 
 ## License
 

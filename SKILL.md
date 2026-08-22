@@ -1,10 +1,10 @@
 ---
 slug: qianjin-ip-design
-displayName: IP形象设计系统
-summary: "'前进IP形象设计系统 - 6大风格形象设计完整方法论：萌系/潮酷系/国风系/极简系/暗黑系/治愈系。每套含头部比例、身体比例、五官设计、色彩体系、轮廓规则、情绪表达、记忆点植入、气质塑造公式。适用于品牌IP设计、潮玩设计、虚拟形象、..."
+displayName: IP形象与品牌标识设计系统
+summary: "'前进IP形象与品牌标识设计系统 - 6大风格IP形象设计完整方法论（萌系/潮酷系/国风系/极简系/暗黑系/治愈系，每套含头部比例、身体比例、五官设计、色彩体系、轮廓规则、情绪表达、记忆点植入、气质塑造公式），并内置「标识/Logo 设计系统（AI 生成实战）」：三层锁定提示词框架、硅基流动国产直连免费引擎选型、可抄提示词模板与出图工序。适用于品牌IP设计、潮玩设计、虚拟形象、文创产品、公众号头像、品牌标识、App图标等场景。"
 name: qianjin-ip-design
-description: "前进IP形象设计系统 - 6大风格形象设计完整方法论：萌系/潮酷系/国风系/极简系/暗黑系/治愈系。每套含头部比例、身体比例、五官设计、色彩体系、轮廓规则、情绪表达、记忆点植入、气质塑造公式。适用于品牌IP设计、潮玩设计、虚拟形象、文创产品设计等场景。"
-version: 1.0.0
+description: "前进IP形象与品牌标识设计系统 - 6大风格IP形象设计完整方法论（萌系/潮酷系/国风系/极简系/暗黑系/治愈系），并内置「标识/Logo 设计系统（AI 生成实战）」：三层锁定提示词框架、硅基流动国产直连免费引擎选型、可抄模板与出图工序。适用于品牌IP设计、潮玩设计、虚拟形象、公众号头像、品牌标识、App图标等场景。"
+version: 1.1.0
 category: 设计创作
 platforms:
   - workbuddy
@@ -21,6 +21,7 @@ tags:
   - cartoon-design
   - style-guide
 license: MIT
+disable: false
 ---
 
 # 前进IP形象设计系统 · qianjin-ip-design
@@ -653,7 +654,135 @@ IP是否需要适应不同风格？检查以下问题：
 
 ---
 
-## 九、使用方式
+## 九、标识/Logo 设计系统（AI 生成实战）
+
+> IP 形象讲「角色」，标识讲「符号」。本章把 Logo 从「给规则」推进到「能直接出图」：先讲为什么通用模型翻车，再给可抄的三层锁定框架、国产免费引擎选型、提示词模板，最后用真实案例走一遍。
+
+### 9.1 为什么通用生图模型做不出好 Logo（根因）
+
+通用大模型（HY3、deepseekV4flash、Agnes Image 2.1 Flash、Kolors 等）的强项是**高信息密度、复杂场景、语义对齐**，说白了是为「密、繁、写实」调的。而 Logo 恰恰要反方向：极简、扁平、矢量干净、字要准。模型强项正好是 Logo 的死穴，越写「简约、禁用渐变」它越别扭。
+
+两个叠加伤：
+
+- **Logo 是 AI 出图最难的活**。它要同时满足矢量级干净 + 字母精准 + 品牌味，通用模型给的通常是「好看的装饰画」，不是能用的标识。文字更是重灾区，十个模型九个把字母拼歪。
+- **提示词不能跨模型平移**。豆包自带一套中文设计语感和文字处理，能接住你的「负空间、禁用渐变」；通用模型会把中文翻成英文再生成，精确约束在翻译和模型差异里被稀释。
+
+📌 工具永远不是瓶颈，选对引擎才是。换「Logo 专精 / 国产直连」的模型，同一套提示词立刻出能挑的候选。
+
+### 9.2 三层锁定框架（与 IP 8维互补）
+
+Logo 提示词同样要「锁定」，否则模型自由发挥必翻车。把之前的 IP 8维收敛成三层，并固化为脚本参数：
+
+| 层 | 参数 | 作用 | 可选值 |
+|----|------|------|--------|
+| 第一层 风格锚定 | `--genre` | 锁定设计流派，避免「四不像」 | `swiss`（瑞士国际风/无衬线/大留白）/ `bauhaus`（包豪斯几何）/ `muji`（日式克制）/ `badge`（徽章印章）/ `memphis`（孟菲斯撞色）/ `guofeng`（国风） |
+| 第二层 形态约束 | `--style` | 锁定构图、母题、应用约束 | 自由文本，如「适配圆形头像框，缩到32px仍可辨」 |
+| 第三层 应用约束 | `--no-text` | 符号优先，绕开文字翻车 | 加此开关即「只出图形、不出字」 |
+
+脚本会自动追加底层硬约束（等价于文章的「禁用渐变/3D」）：`flat vector logo, minimal, solid color, clean geometric, no gradient, no 3D, no photorealism, no drop shadow, high contrast`。
+
+📌 图形标和文字一定要分开做：先让模型只出纯符号（不带字），再用 Figma / Illustrator / 文字强的模型单独加字标，能绕开 90% 的文字翻车。
+
+### 9.3 引擎选型（国内直连免费优先 = 硅基流动）
+
+让 WorkBuddy 稳定出专业 Logo，根本解是换引擎，不是改提示词。首选 **硅基流动（SiliconFlow）**：
+
+- 一个 API key 随时切几十种模型，不用到处找 key、改代码；
+- 国内直连、不用代理、OpenAI 兼容接口；
+- 注册即送免费额度，老用户邀请注册额外送 16 元券，有效期长达 1 年以上，不用担心优惠券过期。
+
+实测过的生图模型对比（用 `--model` 指定）：
+
+| 模型 | 中文/指令遵循 | 收敛能力 | 实测表现 | 备注 |
+|------|------|------|------|------|
+| `Kwai-Kolors/Kolors` | 中文理解最强 | 弱，常忽略「禁用渐变」 | 出了立体渐变装饰图，不能直接用 | 中文品牌名友好 |
+| `Qwen/Qwen-Image` | 指令遵循强 | 强，单色禁渐变听话 | 最接近可用，约束基本遵守 | **当前账号默认可用** |
+| `black-forest-labs/FLUX.1-dev` | 高质量通用 | 最强 | 最优，但返回 `Model disabled` | 需**充值激活余额**解锁（见下） |
+| `black-forest-labs/FLUX.1-schnell` | 快速 | 中等 | 开源免费档，快但略糙 | 试水可用 |
+| `stabilityai/stable-diffusion-xl-base-1.0` | 经典 SD | 中等 | 可控，需 LoRA 才出彩 | 风格化基础 |
+
+⚠️ **FLUX.1-dev 开通实测坑**：你的账号直接调 `FLUX.1-dev` 返回 `code:30003 "Model disabled"`。根因是它是**付费模型**，需账户有余额，新用户送的代金券不会自动生效。开通 3 步：① 控制台做**实名认证** → ② 左侧「余额」充值激活（最低 0.01 元即可解锁代金券，系统优先扣充值再扣券）→ ③ 同 key 直接调，不用改任何配置。约 ¥0.02–0.05/张，注册额度 + 16 元券够跑几百张。
+
+其他可选（非必需）：`Recraft`（原生产 SVG 矢量、Logo 专精，但国内访问波动、免费档产出公开无商业授权）、`OpenAI gpt-image-1`（通用强、文字稳、可透明底）、`Ideogram`（纯文字字标最强，需代理）。
+
+### 9.4 生成命令（脚本已内置 scripts/logo_gen.py）
+
+密钥仅从环境变量读取，绝不落代码。先持久化你的硅基流动 key（一次即可，重启后仍在）：
+
+```powershell
+# Windows PowerShell，设好后会持久化到用户级环境变量
+[Environment]::SetEnvironmentVariable("SILICONFLOW_API_KEY", "你的硅基流动key", "User")
+```
+
+出图（默认用 `Qwen/Qwen-Image`，收敛强、当前账号可用）：
+
+```powershell
+$env:SILICONFLOW_API_KEY="你的硅基流动key"
+& "C:\Users\ZQJ\.workbuddy\binaries\python\envs\default\Scripts\python.exe" `
+  "C:\Users\ZQJ\.workbuddy\skills\qianjin-ip-design\scripts\logo_gen.py" `
+  --provider siliconflow --model "Qwen/Qwen-Image" `
+  --brief "AI 工具公众号向 AI 前进的极简 App 图标，字母 Q 与向上箭头结合，国风，留白充足" `
+  --genre guofeng --no-text --num 4 `
+  --out "C:\Users\ZQJ\WorkBuddy\2026-06-04-22-58-34\logo_output"
+```
+
+若已充值激活 FLUX.1-dev，换成更优模型：
+
+```powershell
+--provider siliconflow --model "black-forest-labs/FLUX.1-dev"
+```
+
+> 注：`Qwen-Image` 等模型单次只返回 1 张（忽略 `n>1`），脚本已自动补足到 `--num` 张，一条命令出齐到同一目录。
+
+### 9.5 可抄提示词模板（英文强负面写法）
+
+中文 brief 要在通用模型上压出干净 Logo，务必转成**英文关键词 + 强负面**。模板：
+
+```
+[主体描述], pure black on white, minimalist symbolic icon, clean geometric [sans-serif/serif],
+generous negative space, high contrast single color,
+no gradient, no 3D, no shading, no texture, no drop shadow, no background, no photo,
+sharp edges, flat vector, professional brand mark
+```
+
+实战示例（把「Z 变形为向上飞鸟」转写）：
+
+```
+minimalist symbolic personal avatar icon, pure black on white,
+capital letter Z transformed into a stylized upward flying bird silhouette,
+generous negative space, clean geometric sans-serif forms, simple bold shapes,
+composed to fit inside a circular frame, remains clearly legible at 32x32 pixels,
+high contrast single color,
+no gradient, no 3D, no shading, no texture, no shadow, no background, sharp edges
+```
+
+📌 通用模型（Kolors）对英文负面约束「no gradient」经常视而不见；收敛强的模型（Qwen-Image / FLUX.1-dev）才真正听话。提示词对了模型不对，照样翻车。
+
+### 9.6 实战案例：Z→飞鸟 极简单色头像标
+
+需求：`极简符号化个人头像标，单色黑，将首字母 Z 变形为向上飞鸟剪影，负空间留白，几何无衬线，禁用渐变与 3D，适配圆形头像框，缩到 32px 仍可辨。`
+
+用 `Qwen/Qwen-Image` + 9.5 模板实跑，产出 4 张候选（落点 `logo_avatar/z_bird_1~4.png`）。经验教训：
+
+- 通用模型出的图需要**人工挑一张**当底，再用矢量软件加字标 / 压纯单色 / 转 SVG；
+- 若 4 张都不够干净，换 `FLUX.1-dev`（账户激活后）或把 prompt 再压严苛（加 `single continuous stroke, no internal details`）；
+- 想要真·矢量可缩放，走 `Recraft --vector` 或出图后转 SVG。
+
+### 9.7 出图后工序（图形/文字分离流水线）
+
+专业做法不是一锤子生成，而是走流水线：
+
+1. **出方案**：用 9.4 一次出 4–6 张纯符号候选；
+2. **人工挑**：按 8.1 的统一测试矩阵（剪影/缩略图/黑白/反色）挑 1–2 张；
+3. **加字标**：Figma / Illustrator 叠字标，或丢给文字强的模型单独生成 wordmark；
+4. **转矢量**：描摹成 SVG（或 Recraft 直出 SVG），保证无限缩放；
+5. **可用性测试**：缩到 16×16 / 32×32 仍可辨，单色印刷不垮。
+
+📌 这一步是「AI 出底稿 + 人做品牌决策」，AI 负责量，人负责质。
+
+---
+
+## 十、使用方式
 
 本技能适用于以下场景：
 
@@ -664,11 +793,15 @@ IP是否需要适应不同风格？检查以下问题：
 | 风格诊断 | "帮我分析一下这个IP属于什么风格，在哪些维度可以改进" |
 | 跨风格设计 | "把这个国风IP改成治愈系风格" |
 | 商业评估 | "这个IP做盲盒可行吗？帮我做商业落地评估" |
+| 设计Logo/标识 | "用 WorkBuddy 帮我做一个极简单色公众号头像标，首字母 Z 变形" |
+| AI 出图翻车 | "通用模型做 Logo 总很乱，换什么引擎能出专业感" |
+| 提示词模板 | "给我一套能抄的 Logo 英文强负面提示词" |
 
 ---
 
-## 十、版本记录
+## 十一、版本记录
 
 | 版本 | 日期 | 变更 |
 |------|------|------|
 | v1.0 | 2026-07-11 | 初始版本：6大风格×8维设计规则体系 |
+| v1.1 | 2026-08-22 | 新增「九、标识/Logo 设计系统（AI 生成实战）」：根因 / 三层锁定框架 / 硅基流动国产免费引擎选型（含 FLUX.1-dev 需充值激活实测坑）/ 可抄提示词模板 / Z→飞鸟实战案例 / 出图后工序；内置 scripts/logo_gen.py 使技能可独立出图 |
