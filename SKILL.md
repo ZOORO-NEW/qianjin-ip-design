@@ -4,7 +4,7 @@ displayName: IP形象与品牌标识设计系统
 summary: "'前进IP形象与品牌标识设计系统 - 6大风格IP形象设计完整方法论（萌系/潮酷系/国风系/极简系/暗黑系/治愈系，每套含头部比例、身体比例、五官设计、色彩体系、轮廓规则、情绪表达、记忆点植入、气质塑造公式），并内置「标识/Logo 设计系统（AI 生成实战）」：三层锁定提示词框架、硅基流动国产直连免费引擎选型、可抄提示词模板与出图工序。适用于品牌IP设计、潮玩设计、虚拟形象、文创产品、公众号头像、品牌标识、App图标等场景。"
 name: qianjin-ip-design
 description: "前进IP形象与品牌标识设计系统 - 6大风格IP形象设计完整方法论（萌系/潮酷系/国风系/极简系/暗黑系/治愈系），并内置「标识/Logo 设计系统（AI 生成实战）」：三层锁定提示词框架、硅基流动国产直连免费引擎选型、可抄模板与出图工序。适用于品牌IP设计、潮玩设计、虚拟形象、公众号头像、品牌标识、App图标等场景。"
-version: 1.1.0
+version: 1.1.1
 category: 设计创作
 platforms: [workbuddy, claude-code, cursor, windsurf, codex, linux, macos, windows]
 author: qianjin
